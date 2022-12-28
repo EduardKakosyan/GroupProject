@@ -1,4 +1,4 @@
-# GroupProject
+# Group Project - Dalhousie
 
 E-commerce website
 
