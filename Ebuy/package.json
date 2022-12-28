@@ -1,0 +1,31 @@
+{
+  "name": "ebuy",
+  "version": "1.0.0",
+  "description": "Creating a e-commerce website",
+  "main": "index.js",
+  "scripts": {
+    "compile:sass": "sass --watch home/static/home/scss:home/static/home/css"
+    
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EduardKakosyan/GroupProject.git"
+  },
+  "keywords": [
+    "e-buy"
+  ],
+  "author": "Eduard Kakosyan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/EduardKakosyan/GroupProject/issues"
+  },
+  "homepage": "https://github.com/EduardKakosyan/GroupProject#readme",
+  "devDependencies": {
+    "sass": "^1.57.1"
+  },
+  "dependencies": {
+    "autoprefixer": "^10.4.13",
+    "bootstrap": "^5.2.3",
+    "postcss-cli": "^10.1.0"
+  }
+}
