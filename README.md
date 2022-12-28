@@ -1,10 +1,13 @@
 # GroupProject
+
 E-commerce website
 
-# Languages
-Python, HTML, CSS, Django, 
+# Languages, Frameworks, API
 
-By: 
-    1. @Eduard Kakosyan
-        :E-mail: kakosyaneduard@dal.ca
-    
+Python, HTML, CSS, Django, JavaScript, Bootsrap 5
+
+# Authors
+
+1. Eduard Kakosyan
+
+###### E-mail: kakosyaneduard@dal.ca
