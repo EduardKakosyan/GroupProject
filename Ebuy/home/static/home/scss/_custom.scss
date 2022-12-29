@@ -1,6 +1,6 @@
 //Theme colors
 $indigo:  #6610f2;
-$purple:  #6f42c1;
+$lightpurple:  #cc99ff;
 $darkblue: #00134d;
 $lessdarkblue: #002db3;
 
@@ -18,7 +18,7 @@ $gray-900: #212529;
 $black:    #000;
 
 //
-$primary:  $purple;
+$primary:  $lightpurple;
 $secondary: $white;
 
 @import "../../../../node_modules/bootstrap/scss/bootstrap.scss";
