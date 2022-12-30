@@ -5,8 +5,10 @@ E-commerce website - **Ebuy**
 # Authors
 
 1. Eduard Kakosyan
+2. Hao Tang
 
 ###### E-mail: kakosyaneduard@dal.ca
+###### E-mail: tangphuoc.hao21@gmail.com
 
 # Languages, Frameworks, API
 
