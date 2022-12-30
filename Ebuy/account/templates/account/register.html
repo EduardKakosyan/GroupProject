@@ -1,0 +1,59 @@
+{% extends "home/layout.html" %}
+
+{% block body %}
+    <h3>Create an account</h3>
+    <br>
+    
+    <form action="{% url 'account:register' %}" method="post">
+        {% csrf_token %}
+        <label>First name: </label>
+        <input type="text", name="first_name", placeholder="First Name">
+        <br>
+
+        <label>Last name: </label>
+        <input type="text", name="last_name", placeholder="Last Name">
+        <br>
+
+        <label>Address: </label>
+        <textarea type="text", name="address", placeholder="Address",rows="2", col="50"></textarea>
+        <br>
+
+        <label>City: </label>
+        <input type="text", name="city", placeholder="City">
+        <br>
+
+        <label>Province: </label>
+        <select name="province">
+            <option value="NS">Nova Scotia</option>
+            <option value="NB">New Brunswick</option>
+            <option value="QC">Quebec</option>
+            <option value="PEI">Prince Edward Island</option>
+            <option value="NL">Newfoundland and Labrador</option>
+            <option value="ON">Ontario</option>
+            <option value="MB">Manitoba</option>
+            <option value="SK">Saskatchewan</option>
+            <option value="AB">ALberta</option>
+            <option value="BC">British Columbia</option>
+            <option value="YT">Yukon</option>
+            <option value="NT">Northwest Territories</option>
+            <option value="NU">Nunavut</option>
+          </select>
+          <br>
+
+        <label>Email: </label>
+        <input type="text", name="email", placeholder="Email">
+        <br>
+
+        <label>Username: </label>
+        <input type="text", name="username", placeholder="Username">
+        <br>
+
+        <label>Password: </label>
+        <input type="text", name="password", placeholder="Password">
+        <br>
+
+        <input type="submit", value="Register">
+    </form>
+    <br>
+    
+{% endblock %}

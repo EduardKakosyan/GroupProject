@@ -3,6 +3,7 @@ from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
+from .models import *
 
 # Create your views here.
 from django.shortcuts import render
@@ -33,4 +34,25 @@ def login_view(request):
     return render(request, "account/login.html")
 
 def logout_view(request):
-    pass
+    logout(request)
+    
+def register_view(request):
+    if request.method == "POST":
+        first_name = request.POST["first_name"]
+        last_name = request.POST["last_name"]
+        address = request.POST["address"]
+        city = request.POST["city"]
+        province = request.POST["province"]
+        email = request.POST["email"]
+        username = request.POST["username"]
+        password = request.POST["password"]
+        user = User.objects.create_user(username=username,
+                                 email=email,
+                                 password=password)
+        u = UserProfile(user=user, first_name=first_name, last_name=last_name,
+                        address=address, city=city, province=province)
+        u.save()
+        return render(request, "account/login.html", {
+            "message": "Account created, please log in"
+        })
+    return render(request, "account/register.html")
