@@ -41,10 +41,13 @@
         </button>
         <div class="collapse navbar-collapse justify-content-end" id = "navbarNavDropdown">
           <ul class="navbar-nav">
+            <!-- Search bar -->
             <form class="d-flex" role="search">
                 <input class="form-control me-2" type="search" placeholder="Search for anything" aria-label="Search">
                 <button type="submit" class="btn btn-outline-secondary">search</button>
-              </form>        
+              </form>
+
+            <!-- Account icon -->   
             <li class="nav-item">
               <a class="nav-link" href="{% url 'account:index' %}"
                 ><svg
@@ -62,6 +65,8 @@
                   /></svg>
               </a>
             </li>
+
+            <!-- Cart icon -->
             <li class="nav-item">
               <a class="nav-link" href="{% url 'cart:index' %}"
                 ><svg
