@@ -61,3 +61,24 @@ def register_view(request):
             "message": "Account created, please log in"
         })
     return render(request, "account/register.html")
+
+def activity_view(request):
+    if not request.user.is_authenticated:
+        return HttpResponseRedirect(reverse("account:login"))
+    return render(request, "account/user-activity.html", {
+        "user": request.user
+    })
+    
+def messages_view(request):
+    if not request.user.is_authenticated:
+        return HttpResponseRedirect(reverse("account:login"))
+    return render(request, "account/user-messages.html", {
+        "user": request.user
+    })
+    
+def account_view(request):
+    if not request.user.is_authenticated:
+        return HttpResponseRedirect(reverse("account:login"))
+    return render(request, "account/user-account.html", {
+        "user": request.user
+    })

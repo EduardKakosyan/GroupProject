@@ -17,31 +17,30 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
+    <!-- Main content -->
     {% extends "home/layout.html" %}
-
+    
     {% block body %}
-      <br>
-      <h3 class="display-6">My eBuy</h3>
-      <br>
+    <br>
+    <h3 class="display-6">My eBuy</h3>
+    <br>
 
-      <nav class="navbar border-bottom">
-        <ul class="navbar-nav d-flex flex-row">
-          <li class="nav-item">
-            <a class="nav-link active" href="{% url 'account:activity' %}">Activity</a>
-          </li>
-          <li class="nav-item ml-5 mr-5">
-            <a class="nav-link" href="{% url 'account:messages' %}">Messages</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'account:account' %}">Account</a>
-          </li>
-        </ul>
-      </nav>
+    <nav class="navbar border-bottom">
+      <ul class="navbar-nav d-flex flex-row">
+        <li class="nav-item">
+          <a class="nav-link active" href="{% url 'account:activity' %}">Activity</a>
+        </li>
+        <li class="nav-item ml-5 mr-5">
+          <a class="nav-link" href="{% url 'account:messages' %}">Messages</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'account:account' %}">Account</a>
+        </li>
+      </ul>
+    </nav>
 
-      <br>
-      <button><a href="{% url 'account:logout' %}">Log out</a></button>
+    <br>
+    <button><a href="{% url 'account:logout' %}">Log out</a></button>
     {% endblock %}
   </body>
 </html>
-
-
