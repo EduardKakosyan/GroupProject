@@ -13,7 +13,9 @@ from django.shortcuts import render
 def index(request):
     if not request.user.is_authenticated:
         return HttpResponseRedirect(reverse("account:login"))
-    return render(request, "account/user.html")
+    return render(request, "account/user.html", {
+        "user": request.user
+    })
 
 def login_view(request):
     if request.method == "POST":
@@ -35,6 +37,9 @@ def login_view(request):
 
 def logout_view(request):
     logout(request)
+    return render(request, "account/login.html", {
+        "message": "Logged out"
+    })
     
 def register_view(request):
     if request.method == "POST":

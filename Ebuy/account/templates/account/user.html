@@ -1,5 +1,6 @@
 {% extends "home/layout.html" %}
 
 {% block body %}
-  
+  <h3>Welcome, {{ user.user_profile.first_name }}
+  <a href="{% url 'account:logout' %}">Log out</a>
 {% endblock %}
