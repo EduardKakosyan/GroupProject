@@ -21,10 +21,11 @@
 
     {% block body %}
         <br>
-        <h3 class="text-center display-4">Login</h3>
+            <h3 class="text-center display-4">Login</h3>
         <br>
         {% if message %}
-            <div>{{ message }}</div>
+            <div><span>&#9888;</span> {{ message }}</div>
+            <br>
         {% endif %}
         <form action="{% url 'account:login' %}" method="post">
             {% csrf_token %}
@@ -36,10 +37,12 @@
                 <label for="password">Password:</label>
                 <input type="password" name="password" class="form-control" placeholder="Enter password">
             </div>
-            <input type="submit", value="Login">
+            <div class="text-center">
+            <input type="submit" class="btn btn-primary" value="Login">
+            </div>
         </form>
         <br>
-        <h5>Don't have an account yet? <a href="{% url 'account:register' %}">Create one here</a></h5>
+        <p class="text-center">Don't have an account yet? <a href="{% url 'account:register' %}">Create one here</a></p>
     {% endblock %}
   </body>
 </html>
