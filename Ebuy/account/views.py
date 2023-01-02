@@ -13,7 +13,7 @@ from django.shortcuts import render
 def index(request):
     if not request.user.is_authenticated:
         return HttpResponseRedirect(reverse("account:login"))
-    return render(request, "account/user.html", {
+    return render(request, "account/user-account.html", {
         "user": request.user
     })
 
@@ -31,7 +31,7 @@ def login_view(request):
             return HttpResponseRedirect(reverse("account:index"))
         else:
             return render(request, "account/login.html", {
-                "message": "Invalid email or password, try again"
+                "message": "Invalid username or password, try again"
             })
     return render(request, "account/login.html")
 
@@ -69,10 +69,10 @@ def activity_view(request):
         "user": request.user
     })
     
-def messages_view(request):
+def listings_view(request):
     if not request.user.is_authenticated:
         return HttpResponseRedirect(reverse("account:login"))
-    return render(request, "account/user-messages.html", {
+    return render(request, "account/user-listings.html", {
         "user": request.user
     })
     
@@ -80,5 +80,5 @@ def account_view(request):
     if not request.user.is_authenticated:
         return HttpResponseRedirect(reverse("account:login"))
     return render(request, "account/user-account.html", {
-        "user": request.user
+        "profile": request.user.user_profile
     })

@@ -25,13 +25,14 @@
     <h3 class="display-6">My eBuy</h3>
     <br>
 
+    <!-- User navigation bar -->
     <nav class="navbar border-bottom">
       <ul class="navbar-nav d-flex flex-row">
         <li class="nav-item">
           <a class="nav-link" href="{% url 'account:activity' %}">Activity</a>
         </li>
         <li class="nav-item ml-5 mr-5">
-          <a class="nav-link" href="{% url 'account:messages' %}">Messages</a>
+          <a class="nav-link" href="{% url 'account:listings' %}">Listings</a>
         </li>
         <li class="nav-item">
           <a class="nav-link active" href="{% url 'account:account' %}">Account</a>
@@ -39,8 +40,22 @@
       </ul>
     </nav>
 
+    <!-- User personal info -->
     <br>
-    <button><a href="{% url 'account:logout' %}">Log out</a></button>
+    <div class="row">
+        <dt class="col-sm-2 mb-4">Full name:</dt>
+        <dd class="col-sm-9">{{ profile.first_name }} {{ profile.last_name }}</dd>
+        <dt class="col-sm-2 mb-4">Address:</dt>
+        <dd class="col-sm-9">{{ profile.address }}, {{ profile.city }}, {{ profile.province }}</dd>
+        <dt class="col-sm-2 mb-4">Email:</dt>
+        <dd class="col-sm-9">{{ profile.email }}</dd>
+    </div>
+
+    <div class="mt-5">
+        Not your account?
+        <a href="{% url 'account:logout' %}">Log out</a>
+    </div>
+
     {% endblock %}
   </body>
 </html>

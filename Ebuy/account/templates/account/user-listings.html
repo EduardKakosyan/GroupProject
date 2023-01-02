@@ -25,22 +25,21 @@
     <h3 class="display-6">My eBuy</h3>
     <br>
 
+    <!-- User navigation bar -->
     <nav class="navbar border-bottom">
       <ul class="navbar-nav d-flex flex-row">
         <li class="nav-item">
-          <a class="nav-link active" href="{% url 'account:activity' %}">Activity</a>
+          <a class="nav-link" href="{% url 'account:activity' %}">Activity</a>
         </li>
         <li class="nav-item ml-5 mr-5">
-          <a class="nav-link active" href="{% url 'account:messages' %}">Messages</a>
+          <a class="nav-link active" href="{% url 'account:listings' %}">Listings</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="{% url 'account:account' %}">Account</a>
         </li>
       </ul>
     </nav>
-
-    <br>
-    <button><a href="{% url 'account:logout' %}">Log out</a></button>
+    
     {% endblock %}
   </body>
 </html>

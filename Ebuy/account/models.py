@@ -10,4 +10,5 @@ class UserProfile(models.Model):
     #Can be improved
     city = models.CharField(max_length=50, default="Halifax")
     province = models.CharField(max_length=2, default="NS")
+    email = models.CharField(max_length=50, default="iamhandsome@gmail.com")
     
