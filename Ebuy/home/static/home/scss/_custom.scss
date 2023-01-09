@@ -21,4 +21,8 @@ $black:    #000;
 $primary:  $lightpurple;
 $secondary: $white;
 
+//carousel
+$carousel-transition-duration:       4s;
+$carousel-control-color:             $darkblue;
+
 @import "../../../../node_modules/bootstrap/scss/bootstrap.scss";
