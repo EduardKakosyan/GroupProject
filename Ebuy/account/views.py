@@ -4,6 +4,8 @@ from django.urls import reverse
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from .models import *
+from .forms import *
+from django.contrib import messages
 
 # Create your views here.
 from django.shortcuts import render
@@ -14,7 +16,7 @@ def index(request):
     if not request.user.is_authenticated:
         return HttpResponseRedirect(reverse("account:login"))
     return render(request, "account/user-account.html", {
-        "user": request.user
+        "profile": request.user
     })
 
 def login_view(request):
@@ -30,37 +32,32 @@ def login_view(request):
             login(request, user)
             return HttpResponseRedirect(reverse("account:index"))
         else:
+            fields = {"message": "Invalid username or password, try again"}
             return render(request, "account/login.html", {
-                "message": "Invalid username or password, try again"
+                "message": "Invalid email or password!"
             })
     return render(request, "account/login.html")
 
 def logout_view(request):
     logout(request)
     return render(request, "account/login.html", {
-        "message": "Logged out"
+        "message": "Logged out!"
     })
     
 def register_view(request):
+    form = UserCreateForm()
+    
     if request.method == "POST":
-        first_name = request.POST["first_name"]
-        last_name = request.POST["last_name"]
-        address = request.POST["address"]
-        city = request.POST["city"]
-        province = request.POST["province"]
-        email = request.POST["email"]
-        username = request.POST["username"]
-        password = request.POST["password"]
-        user = User.objects.create_user(username=username,
-                                 email=email,
-                                 password=password)
-        u = UserProfile(user=user, first_name=first_name, last_name=last_name,
-                        address=address, city=city, province=province)
-        u.save()
-        return render(request, "account/login.html", {
-            "message": "Account created, please log in"
-        })
-    return render(request, "account/register.html")
+        form = UserCreateForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "User created!")
+            return render(request, "account/login.html", {
+                "message": "User created!"
+            })
+        
+    fields = {'form': form}
+    return render(request, "account/register.html", fields)
 
 def activity_view(request):
     if not request.user.is_authenticated:
@@ -80,5 +77,5 @@ def account_view(request):
     if not request.user.is_authenticated:
         return HttpResponseRedirect(reverse("account:login"))
     return render(request, "account/user-account.html", {
-        "profile": request.user.user_profile
+        "profile": request.user
     })

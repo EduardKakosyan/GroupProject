@@ -20,29 +20,33 @@
     {% extends "home/layout.html" %}
 
     {% block body %}
+      <div>
         <br>
             <h3 class="text-center display-4">Login</h3>
         <br>
         {% if message %}
-            <div><span>&#9888;</span> {{ message }}</div>
+            <div class="row d-flex justify-content-center">
+              <i class="fa-solid fa-circle-xmark"></i>{{ message }}
+            </div>
             <br>
         {% endif %}
-        <form action="{% url 'account:login' %}" method="post">
-            {% csrf_token %}
-            <div class="form-group">
-                <label for="username">Username:</label>
-                <input type="text" name="username" class="form-control" placeholder="Enter username">
-            </div>
-            <div class="form-group">
-                <label for="password">Password:</label>
-                <input type="password" name="password" class="form-control" placeholder="Enter password">
-            </div>
-            <div class="text-center">
-            <input type="submit" class="btn btn-primary" value="Login">
-            </div>
-        </form>
+        <div class="row d-flex justify-content-center"> 
+          <form action="{% url 'account:login' %}" method="post" style="width:500px">
+              {% csrf_token %}
+              <div class="form-group">
+                  <input type="text" name="username" class="form-control" placeholder="Enter username">
+              </div>
+              <div class="form-group">
+                  <input type="password" name="password" class="form-control" placeholder="Enter password">
+              </div>
+              <div class="text-center">
+                <input type="submit" class="btn btn-primary" value="Login">
+              </div>
+          </form>
+        </div>
         <br>
         <p class="text-center">Don't have an account yet? <a href="{% url 'account:register' %}">Create one here</a></p>
+      </div>
     {% endblock %}
   </body>
 </html>
