@@ -1,7 +1,7 @@
 {% extends "home/layout.html" %}
 
 {% block body %}
-<div id="carouselExampleIndicators" class="carousel slide">
+  <div class="carousel slide">
     <div class="carousel-indicators">
       <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
       <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
@@ -27,5 +27,19 @@
       <span class="visually-hidden">Next</span>
     </button>
   </div>
+
+  <div class = "container w-100">
+    
+      <div class="card col-lg-4 m-4" style="width: 18rem;">
+        <img class="card-img-top w-100" src="..." alt="Card image cap" style="height:200px">
+        <div class="card-body">
+          <h5 class="card-title">Card title</h5>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <a href="#" class="btn btn-primary">Add to cart</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
 
 {% endblock %}
