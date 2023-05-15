@@ -79,3 +79,8 @@ def account_view(request):
     return render(request, "account/user-account.html", {
         "profile": request.user
     })
+
+def cart(request):
+    if not request.user.is_authenticated:
+        return HttpResponseRedirect(reverse("account:login"))
+    return render(request, "account/cart.html")

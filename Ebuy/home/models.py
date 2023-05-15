@@ -4,8 +4,4 @@ from account.models import *
 
 
 # Create your models here.
-class ProductProfile(models.Model):
-    productName = models.OneToOneField(User, on_delete = models.CASCADE, related_name = "product_profile")
-    price = models.DecimalField(max_digits = 10, decimal_places = 2)
-    date = models.DateTimeField()
-    seller = models.ForeignKey(UserProfile, on_delete = models.CASCADE, related_name = "user_profile")
+
