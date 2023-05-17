@@ -42,7 +42,7 @@ def logout_view(request):
     return render(request, "account/login.html", {
         "message": "Logged out!"
     })
-    
+
 def register_view(request):
     form = UserCreateForm()
     
@@ -64,13 +64,32 @@ def activity_view(request):
     return render(request, "account/user-activity.html", {
         "user": request.user
     })
-    
+
+
 def listings_view(request):
+    form = ProductPosting()
     if not request.user.is_authenticated:
         return HttpResponseRedirect(reverse("account:login"))
-    return render(request, "account/user-listings.html", {
-        "user": request.user
-    })
+    
+    #Add new product
+    if request.method == "POST":
+        form = ProductPosting(request.POST, request.FILES)
+        if form.is_valid():
+            price = form.cleaned_data['price']
+            name = form.cleaned_data['name']
+            image = request.FILES['image']
+            p = Product(user=request.user, price=price, name=name, image=image)
+            p.save()
+            messages.success(request, "Product created!")
+            
+            
+    fields = {"user": request.user, "form": form}
+    return render(request, "account/user-listings.html", fields)
+
+#Remove product from user profile
+def remove_product(request, id):
+    Product.objects.filter(id=id).delete()
+    return HttpResponseRedirect(reverse("account:listings"))
     
 def account_view(request):
     if not request.user.is_authenticated:

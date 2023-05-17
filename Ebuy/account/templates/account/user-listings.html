@@ -33,7 +33,50 @@
         </li>
       </ul>
     </nav>
-    
+
+    <!-- Create Listing -->
+    <br>
+    <h3>Create Listing</h3>
+    <br>
+    <div class="row d-flex justify-content-center">
+      {% if form.errors %}
+          <div class="alert alert-primary" role="alert">
+              {{form.errors}}
+          </div>
+      {% endif %}
+
+      <form action="{% url 'account:listings' %}" enctype="multipart/form-data" method="post" style="width:500px">
+          {% csrf_token %}
+          {% for field in form %}
+              <div class="form-group">
+                  {{field}}
+              </div>
+          {% endfor %}
+          <div class="text-center">
+              <input type="submit" class="btn btn-primary" value="Create listing">
+          </div>
+          <br>
+      </form>
+
+      <!-- User Listing -->
+      <br>
+      <h3>Your Listing</h3>
+      <br>
+      <br>
+      <div class = "row d-flex justify-content-center">
+        {% for product in user.products.all %}
+        <div class="card col-lg-3 m-2" >
+          <img class="card-img-top" src="{{product.imageURL}}" alt="Card image cap" style="height:200px; object-fit:contain">
+          <div class="card-body">
+            <h5 class="card-title">${{product.price}}</h5>
+            <p class="card-text"><strong>{{product.name}}</strong></p>
+            <p class="card-text"><small>Distributed by: {{product.user.first_name}} {{product.user.last_name}}</small></p>
+            <a href="{% url 'account:remove_product' id=product.id %}" class="btn btn-danger">Remove from cart</a>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
     {% endblock %}
   </body>
 </html>
