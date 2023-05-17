@@ -31,14 +31,14 @@
   <div class = "row d-flex justify-content-center">
       {% for product in products %}
       <div class="card col-lg-3 m-2" >
-        <img class="card-img-top w-100" src="..." alt="Card image cap" style="height:200px">
+        <img class="card-img-top" src="{{product.imageURL}}" alt="Card image cap" style="height:200px; object-fit:contain">
         <div class="card-body">
-          <h5 class="card-title">{{product.price}}</h5>
-          <p class="card-text">{{product.name}}</p>
+          <h5 class="card-title">${{product.price}}</h5>
+          <p class="card-text"><strong>{{product.name}}</strong></p>
+          <p class="card-text"><small>Distributed by: {{product.user.first_name}} {{product.user.last_name}}</small></p>
           <a href="#" class="btn btn-primary">Add to cart</a>
         </div>
       </div>
-    
     {% endfor %}
   </div>
 
