@@ -1,10 +1,11 @@
 from django.shortcuts import render
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, JsonResponse
 from django.urls import reverse
 from django.contrib.auth import authenticate, login, logout
 from .models import *
 from .forms import *
 from django.contrib import messages
+import json
 
 # Create your views here.
 from django.shortcuts import render
@@ -98,7 +99,22 @@ def account_view(request):
         "profile": request.user
     })
 
+#Add products to cart
+def add_to_cart(request,id):
+    product = Product.objects.get(id=id)
+    request.user.order.products
+
 def cart(request):
     if not request.user.is_authenticated:
         return HttpResponseRedirect(reverse("account:login"))
     return render(request, "account/cart.html")
+
+def updateItem(request):
+    data = json.loads(request.body)
+    productId = data['productId']
+    action = data['action']
+    
+    customer = request.user
+    
+    
+    return JsonResponse('productId', safe=False)
